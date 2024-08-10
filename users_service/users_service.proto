@@ -37,7 +37,7 @@ message user {
 }
 
 message refreshToken {
-    string id               = 1;
+    string user_id          = 1;
     string refresh_token    = 2;
     string expires_in       = 3;
 }
