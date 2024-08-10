@@ -6,7 +6,7 @@ import "users.proto";
 
 package users;
 
-service UsersService {
+service AuthService {
     rpc Create                      (CreateUser)             returns    (user);
     rpc GetByEmail                  (Email)                  returns    (user);
     rpc DeleteRefreshTokenByUserId  (PrimaryKey)             returns    (Void);
