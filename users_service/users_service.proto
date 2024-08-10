@@ -8,7 +8,7 @@ package users;
 
 service UsersService {
     rpc Create (CreateUser) returns (user);
-    rpc GetByUsername      (Email) returns        (user);
+    rpc GetByEmail      (Email) returns        (user);
     // rpc GetById      (PrimaryKey) returns        (user);
     // rpc GetAll      (PrimaryKey) returns        (user);
     // rpc Update   (updateUser) returns        (updateProfileResponce);
