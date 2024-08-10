@@ -7,13 +7,12 @@ import "users.proto";
 package users;
 
 service UsersService {
-    rpc GetById      (PrimaryKey) returns        (user);
-    rpc GetAll      (GetListRequest) returns        (users);
-    rpc Update   (updateUser) returns        (UpdatedUser);
-    rpc Delete   (PrimaryKey) returns        (Void);
-    rpc ChangePassword      (changePassword) returns    (Void);
-    // rpc ForgotPassword      (ForgotPasswordReq) returns (Message);
-    // rpc ResetPassword       (ResetPasswordReq) returns  (Message);
+    rpc GetById             (PrimaryKey)        returns     (user);
+    rpc GetAll              (GetListRequest)    returns     (users);
+    rpc Update              (updateUser)        returns     (UpdatedUser);
+    rpc Delete              (PrimaryKey)        returns     (Void);
+    rpc ChangePassword      (changePassword)    returns     (Void);
+    rpc ChangeUserRole      (PrimaryKey)        returns     (Void);
 }
 
 message GetListRequest {
@@ -52,14 +51,3 @@ message changePassword {
     string new_password = 2;
     string user_id = 3;
 }
-
-// message ForgotPasswordReq {
-//     string email = 1;
-// }
-
-// message ResetPasswordReq {
-//     string code = 1;
-//     string new_password = 2; 
-//     string user_id = 3;
-//     string email = 4;
-// }
