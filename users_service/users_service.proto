@@ -9,9 +9,9 @@ package users;
 service UsersService {
     rpc GetById      (PrimaryKey) returns        (user);
     rpc GetAll      (GetListRequest) returns        (users);
-    rpc Update   (updateUser) returns        (user);
+    rpc Update   (updateUser) returns        (UpdatedUser);
     rpc Delete   (PrimaryKey) returns        (Void);
-    // rpc ChangePassword      (changePassword) returns    (Message);
+    rpc ChangePassword      (changePassword) returns    (Void);
     // rpc ForgotPassword      (ForgotPasswordReq) returns (Message);
     // rpc ResetPassword       (ResetPasswordReq) returns  (Message);
 }
@@ -31,7 +31,6 @@ message users {
     int32 count         = 4;
 }
 
-
 message updateUser {
     string id               = 1;
     string email            = 2;
@@ -39,24 +38,20 @@ message updateUser {
     string password_hash    = 4;
 }
 
-// message Message {
-//     string message = 1;
-// }
+message UpdatedUser {
+    string id           = 1;
+    string full_name    = 2;
+    string email        = 3;
+    string password     = 4;
+    string user_role    = 5;
+    string updated_at   = 6;
+}
 
-// message updateProfileResponce {
-//     string id = 1;
-//     string username = 2;
-//     string email = 3;
-//     string full_name = 4;
-//     string native_language = 5;
-//     string updated_at = 6;
-// }
-
-// message changePassword {
-//     string current_password = 1;
-//     string new_password = 2;
-//     string user_id = 3;
-// }
+message changePassword {
+    string current_password = 1;
+    string new_password = 2;
+    string user_id = 3;
+}
 
 // message ForgotPasswordReq {
 //     string email = 1;
