@@ -13,7 +13,7 @@ service UsersService {
     rpc StoreRefreshToken           (refreshToken)           returns    (Void);
     rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
     rpc CheckEmailExists            (Email)                  returns    (Void);
-    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
+    rpc ResetPassword               (resetPassword)          returns    (Void);
     // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
     // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
 
@@ -50,6 +50,11 @@ message refreshToken {
 message RequestRefreshToken {
     string refresh_token    = 1;
 
+}
+
+message resetPassword {
+    string new_password = 1;
+    string email = 2;
 }
 
 // message updateUser {
