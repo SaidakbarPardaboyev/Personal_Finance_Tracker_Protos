@@ -11,3 +11,7 @@ message PrimaryKey {
 message Message {
     string message = 1;
 }
+
+message Email {
+    string email = 1;
+}
