@@ -12,6 +12,10 @@ service UsersService {
     rpc DeleteRefreshTokenByUserId  (PrimaryKey)             returns    (Void);
     rpc StoreRefreshToken           (refreshToken)           returns    (Void);
     rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
+    rpc CheckEmailExists            (Email)                  returns    (Void);
+    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
+    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
+    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
 
     // rpc GetById      (PrimaryKey) returns        (user);
     // rpc GetAll      (PrimaryKey) returns        (user);
