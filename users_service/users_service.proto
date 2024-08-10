@@ -7,10 +7,11 @@ import "users.proto";
 package users;
 
 service UsersService {
-    rpc Create                      (CreateUser)    returns (user);
-    rpc GetByEmail                  (Email)         returns (user);
-    rpc DeleteRefreshTokenByUserId  (PrimaryKey)    returns (Void);
-    rpc StoreRefreshToken           (refreshToken)    returns (Void);
+    rpc Create                      (CreateUser)             returns    (user);
+    rpc GetByEmail                  (Email)                  returns    (user);
+    rpc DeleteRefreshTokenByUserId  (PrimaryKey)             returns    (Void);
+    rpc StoreRefreshToken           (refreshToken)           returns    (Void);
+    rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
 
     // rpc GetById      (PrimaryKey) returns        (user);
     // rpc GetAll      (PrimaryKey) returns        (user);
@@ -40,6 +41,11 @@ message refreshToken {
     string user_id          = 1;
     string refresh_token    = 2;
     string expires_in       = 3;
+}
+
+message RequestRefreshToken {
+    string refresh_token    = 1;
+
 }
 
 // message updateUser {
