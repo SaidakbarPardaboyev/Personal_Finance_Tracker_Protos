@@ -7,60 +7,39 @@ import "users.proto";
 package users;
 
 service UsersService {
-    rpc Create                      (CreateUser)             returns    (user);
-    rpc GetByEmail                  (Email)                  returns    (user);
-    rpc DeleteRefreshTokenByUserId  (PrimaryKey)             returns    (Void);
-    rpc StoreRefreshToken           (refreshToken)           returns    (Void);
-    rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
-    rpc CheckEmailExists            (Email)                  returns    (Void);
-    rpc ResetPassword               (resetPassword)          returns    (Void);
-    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
-    // rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
-
-    // rpc GetById      (PrimaryKey) returns        (user);
-    // rpc GetAll      (PrimaryKey) returns        (user);
-    // rpc Update   (updateUser) returns        (updateProfileResponce);
-    // rpc Delete   (updateUser) returns        (updateProfileResponce);
+    rpc GetById      (PrimaryKey) returns        (user);
+    rpc GetAll      (GetListRequest) returns        (users);
+    rpc Update   (updateUser) returns        (user);
+    rpc Delete   (PrimaryKey) returns        (Void);
     // rpc ChangePassword      (changePassword) returns    (Message);
     // rpc ForgotPassword      (ForgotPasswordReq) returns (Message);
     // rpc ResetPassword       (ResetPasswordReq) returns  (Message);
 }
 
-message CreateUser {
-    string email        = 1;
-    string password     = 2;
+message GetListRequest {
+    int32 page          = 1;
+    int64 limit         = 2;
     string full_name    = 3;
-}
-
-message user {
-    string id           = 1;
-    string full_name    = 2;
-    string email        = 3;
-    string password     = 4;
+    string email        = 4;
     string user_role    = 5;
-    string created_at   = 6;
 }
 
-message refreshToken {
-    string user_id          = 1;
-    string refresh_token    = 2;
-    string expires_in       = 3;
+message users {
+    repeated user users = 1;
+    int32 page          = 2;
+    int64 limit         = 3;
+    int32 count         = 4;
 }
 
-message RequestRefreshToken {
-    string refresh_token    = 1;
 
+message updateUser {
+    string email            = 1;
+    string full_name        = 2;
+    string password_hash    = 3;
 }
 
-message resetPassword {
-    string new_password = 1;
-    string email = 2;
-}
-
-// message updateUser {
-//     string id = 1;
-//     string full_name = 2;
-//     string native_language = 3;
+// message Message {
+//     string message = 1;
 // }
 
 // message updateProfileResponce {

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "genproto/users";
+
+import "users.proto";
+
+package users;
+
+service UsersService {
+    rpc Create                      (CreateUser)             returns    (user);
+    rpc GetByEmail                  (Email)                  returns    (user);
+    rpc DeleteRefreshTokenByUserId  (PrimaryKey)             returns    (Void);
+    rpc StoreRefreshToken           (refreshToken)           returns    (Void);
+    rpc CheckRefreshTokenExists     (RequestRefreshToken)    returns    (Void);
+    rpc CheckEmailExists            (Email)                  returns    (Void);
+    rpc ResetPassword               (resetPassword)          returns    (Void);
+}
+
+message CreateUser {
+    string email        = 1;
+    string password     = 2;
+    string full_name    = 3;
+}
+
+message refreshToken {
+    string user_id          = 1;
+    string refresh_token    = 2;
+    string expires_in       = 3;
+}
+
+message RequestRefreshToken {
+    string refresh_token    = 1;
+
+}
+
+message resetPassword {
+    string new_password = 1;
+    string email = 2;
+}

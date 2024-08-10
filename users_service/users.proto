@@ -8,8 +8,13 @@ message PrimaryKey {
     string id = 1;
 }
 
-message Message {
-    string message = 1;
+message user {
+    string id           = 1;
+    string full_name    = 2;
+    string email        = 3;
+    string password     = 4;
+    string user_role    = 5;
+    string created_at   = 6;
 }
 
 message Email {
