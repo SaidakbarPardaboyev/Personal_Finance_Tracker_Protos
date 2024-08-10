@@ -15,3 +15,5 @@ message Message {
 message Email {
     string email = 1;
 }
+
+message Void {}
