@@ -12,7 +12,6 @@ message user {
     string id           = 1;
     string full_name    = 2;
     string email        = 3;
-    string password     = 4;
     string user_role    = 5;
     string created_at   = 6;
 }
