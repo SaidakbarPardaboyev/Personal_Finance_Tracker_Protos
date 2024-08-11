@@ -12,7 +12,7 @@ service UsersService {
     rpc Update              (updateUser)        returns     (UpdatedUser);
     rpc Delete              (PrimaryKey)        returns     (Void);
     rpc ChangePassword      (changePassword)    returns     (Void);
-    rpc ChangeUserRole      (PrimaryKey)        returns     (Void);
+    rpc ChangeUserRole      (changeUserRole)        returns     (Void);
 }
 
 message GetListRequest {
@@ -50,4 +50,9 @@ message changePassword {
     string current_password = 1;
     string new_password = 2;
     string user_id = 3;
+}
+
+message changeUserRole {
+    string id               = 1;
+    string new_user_role    = 2;
 }
