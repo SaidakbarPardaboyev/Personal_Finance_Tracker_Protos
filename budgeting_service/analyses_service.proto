@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "./genproto/budgeting";
+
+package budgeting;
+
+import "budgeting.proto";
+import "goals_service.proto";
+
+service AnalysesService {
+    rpc GetSpendingReport           (PrimaryKey) returns (SpendingReports); // userId in PrimaryKey
+    rpc GetIncomeReport             (PrimaryKey) returns (SpendingReports); // userId in PrimaryKey
+    rpc GetBudgetPerformenceReport  (PrimaryKey) returns (BudgetPerformance); // budgetId in PrimaryKey
+    rpc GetGoalsProgressReport      (PrimaryKey) returns (Goal); // goalId in PrimaryKey
+}
+
+message SpendingReport {
+    string account_name  = 1; // from accounts
+    string account_type  = 2; // from accounts
+    string category_name = 3; // from categories
+    float  amount        = 4; // from transactions
+    string description   = 5; // from transactions
+    string date          = 6; // from transactions
+} // order by date desc
+
+message SpendingReports {
+    repeated SpendingReport SpendingReports = 1;
+    string                  user_id         = 2;
+    int32                   count           = 3;
+}
+
+message BudgetPerformance {
+    string account_name     = 1; // from accounts
+    string account_type     = 2; // from accounts
+    string category_name    = 3; // from categories
+    float  target_amount    = 4; // from budgets (amount field)
+    float  current_amount   = 5; // from transactions
+    string period           = 6; // from budgets
+    string budget_type      = 7; // from categories
+    string start_date       = 8; // from budgets
+    string end_date         = 9; // from budgets
+}

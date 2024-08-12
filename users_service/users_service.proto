@@ -12,7 +12,8 @@ service UsersService {
     rpc Update              (updateUser)        returns     (UpdatedUser);
     rpc Delete              (PrimaryKey)        returns     (Void);
     rpc ChangePassword      (changePassword)    returns     (Void);
-    rpc ChangeUserRole      (changeUserRole)        returns     (Void);
+    rpc ChangeUserRole      (changeUserRole)    returns     (Void);
+    rpc CheckUserIdExists   (PrimaryKey)        returns     (Void);
 }
 
 message GetListRequest {

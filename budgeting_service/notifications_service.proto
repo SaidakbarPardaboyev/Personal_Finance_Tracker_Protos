@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "./genproto/budgeting";
+
+package budgeting;
+
+// service NotificationsService {
+//     rpc GetAll() returns ();
+//     rpc Update() returns ();
+// }
+

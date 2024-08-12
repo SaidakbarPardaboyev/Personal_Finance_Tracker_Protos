@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "./genproto/budgeting";
+
+package budgeting;
+
+import "budgeting.proto";
+
+service TransactionsService {
+    rpc Create  (CreateTransaction) returns (Transaction);
+    rpc GetById (PrimaryKey)        returns (Transaction);
+    rpc GetAll  (TransactionFilter) returns (Transactions);
+    rpc Update  (Transaction)       returns (Transaction);
+    rpc Delete  (PrimaryKey)        returns (Void);
+}
+
+message CreateTransaction {
+    string user_id      = 1;
+    string account_id   = 2;
+    string category_id  = 3;
+    float  amount       = 4;
+    string type         = 5; // income or expense
+    string description  = 6;
+    string date         = 7; // timestamp
+    string created_at   = 8;
+}
+
+message Transaction {
+    string _id          = 1;
+    string user_id      = 2;
+    string account_id   = 3;
+    string category_id  = 4;
+    float  amount       = 5;
+    string type         = 6; // income or expense
+    string description  = 7;
+    string date         = 8; // timestamp
+    string created_at   = 9;
+    string updated_at   = 10;
+}
+
+message TransactionFilter {
+    string user_id      = 1;
+    string account_id   = 2;
+    string category_id  = 3;
+    float  amount       = 4;
+    string type         = 5; // income or expense
+    string date         = 6; // timestamp
+}
+
+message Transactions {
+    repeated Transaction Transactions = 1;
+    int32                count        = 2;
+}

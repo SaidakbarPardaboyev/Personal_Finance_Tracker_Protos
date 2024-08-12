@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "./genproto/budgeting";
+
+package budgeting;
+
+message PrimaryKey {
+    string id = 1;
+}
+
+message Void {}
